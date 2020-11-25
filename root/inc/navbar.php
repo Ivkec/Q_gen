@@ -6,11 +6,11 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.php">Search</a>
+      <li class="nav-item">
+        <a class="nav-link" href="../../index.php">Search</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="root/input.php">Input</a>
+        <a class="nav-link" href="input.php">Input</a>
       </li>
     </ul>
   </div>

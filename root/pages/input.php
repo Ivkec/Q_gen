@@ -1,5 +1,14 @@
+<?php
+session_start();
+if(empty($_SESSION['logged_in']))
+{
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/q_gen/root/pages/logIn.php');
+    exit;
+}
+?>
+
 <?php 
-   include "unos.php";
+   include "../main/unos.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,23 +28,8 @@
     <style>body{background: #f2f2f2;}</style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Q_gen</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<?php include "../inc/navbar.php"; ?>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="../index.php">Search</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="input.php">Input</a>
-      </li>
-    </ul>
-  </div>
-</nav>
     <div class="container"><br>
       <div class="text-center">
          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
@@ -45,16 +39,16 @@
                <label class="text-primary">Unesi odgovor:</label><br>
                <textarea name="answer" cols="60" rows="5" class="border border-primary rounded"></textarea>
              </div>
-             <button type="submit" name="sent" class="btn btn-outline-primary">Search</button>
+             <button type="submit" name="sent" class="btn btn-outline-primary">Upload</button>
          </form>
        </div>
        <?php 
        if(isset($_POST['sent'])){
            if ($query) {
-               echo "<h5 class='text-success'>Upload Success :)</h5>";
+               echo "<h5 class='text-success'>$msg</h5>";
             }
            else {
-            echo "<h5 class='text-danger'>Upload Failed :(</h5>";
+            echo "<h5 class='text-danger'>$msg</h5>";
            }
         }
        

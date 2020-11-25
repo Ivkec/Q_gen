@@ -1,5 +1,14 @@
+<?php
+session_start();
+if(empty($_SESSION['logged_in']))
+{
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/q_gen/root/pages/logIn.php');
+    exit;
+}
+?>
+
 <?php 
-   include "root/search.php";
+   include "root/main/search.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +28,25 @@
     <style>body{background: #f2f2f2;}</style>
 </head>
 <body>
-<?php include "root/navbar.php"; ?>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Q_gen</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.php">Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="root/pages/input.php">Input</a>
+          </li>
+          <li class="nav-item active"><a href='root/main/logOut.php' class='nav-link btn-danger'>Session Close</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <div class="container"><br>
       <div class="text-center">
          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
